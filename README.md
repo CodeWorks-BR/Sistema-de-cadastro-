@@ -4,19 +4,20 @@ Este é um sistema completo para cadastramento de produtos, desenvolvido com Nod
 
 📥 Instalação e Configuração
 
-Clone o repositório:
+1. Clone o repositório:
 
-git clone https://github.com/CodeWorks-BR/Sistema-de-cadastro-
+git clone 
+https://github.com/CodeWorks-BR/Sistema-de-cadastro-
 
-Acesse a pasta do projeto:
+2. Acesse a pasta do projeto:
 
 cd sistema-de-cadastro
 
-Instale as dependências:
+3. Instale as dependências:
 
 npm install
 
-Inicie o servidor de desenvolvimento:
+4. Inicie o servidor de desenvolvimento:
 
 npm run dev
 
@@ -49,4 +50,5 @@ Crie uma branch com a sua funcionalidade.
 Envie um pull request para análise.
 
 📜 Licença
+
 Este projeto está sob a licença MIT. Sinta-se à vontade para utilizá-lo e melhorá-lo! 🚀
