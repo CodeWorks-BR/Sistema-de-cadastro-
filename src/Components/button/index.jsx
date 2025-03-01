@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Button = styled.button`
-width: 30%;
+ width: 30%;
   padding: 12px;
   margin-right: 300px;
   margin-top: 10px;
@@ -9,7 +9,7 @@ width: 30%;
   border-radius: 20px;
   background: #fff;
   color: #000;
-  font-size: 16px;
+  font-size: 22px;
   cursor: pointer;
   transition: 0.3s;
   

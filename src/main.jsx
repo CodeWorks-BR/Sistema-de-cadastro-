@@ -1,11 +1,11 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import Login from "./login/index.jsx";
+import { BrowserRouter } from "react-router-dom";
+import Login from "./Container/login";
 import GlobalStyle from "./styles/globalStyles.js";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+  <BrowserRouter>
     <GlobalStyle />
     <Login />
-  </StrictMode>
+  </BrowserRouter>
 );

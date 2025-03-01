@@ -1,6 +1,8 @@
 
-import { Container, Login, Title, Input, } from "./style";
-import MyButton from "../button/index.jsx";
+import { Container, Login, Title, Input, StyledLink, PasswordLink  } from "./style";
+import MyButton from "../../../src/Components/button";
+
+
 
 const user = {
   name: "Login",
@@ -19,10 +21,10 @@ export default function App() {
         <Input type="text" placeholder="Email" />
         <Input type="password" placeholder="Senha" />
         <MyButton />
-        <a>Esqueci minha senha</a>
+        <PasswordLink>Esqueci minha senha</PasswordLink>
       </Login>
 
-      <a href="">Criar Conta</a>
+      <StyledLink to="/cadastro">Cadastre-se</StyledLink>
     </Container >
   );
 };
