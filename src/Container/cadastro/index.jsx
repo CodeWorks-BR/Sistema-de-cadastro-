@@ -1,4 +1,5 @@
-import { Container, Title, Input, Link } from "./style";
+
+import { Container, Title, Input, StyledLink } from "./style";
 
 
 export default function Register() {
@@ -13,7 +14,7 @@ export default function Register() {
   
       </div>
 
-      <Link to="/">Já tem uma conta? Faça login</Link>
+      <StyledLink to="/">Já tem uma conta? Faça login</StyledLink>
     </Container>
   );
 }
