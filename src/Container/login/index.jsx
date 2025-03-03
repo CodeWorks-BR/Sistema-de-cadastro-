@@ -20,7 +20,7 @@ export default function App() {
         <Title>LOGIN</Title>
         <Input type="text" placeholder="Email" />
         <Input type="password" placeholder="Senha" />
-        <MyButton />
+        <MyButton label="Login" to="/AcessarSistema" />
         <PasswordLink>Esqueci minha senha</PasswordLink>
       </Login>
 

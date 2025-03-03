@@ -1,6 +1,21 @@
 import styled from "styled-components";
+import { Link  } from "react-router-dom";
+import PropTypes from 'prop-types';
 
-const Button = styled.button`
+
+function MyButton({ label, to }) {
+  return <Button to={to}>{label}</Button>;
+}
+
+MyButton.propTypes = {
+  label: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+};
+
+export default MyButton;
+
+
+const Button = styled(Link)`
  width: 30%;
   padding: 12px;
   margin-right: 300px;
@@ -12,6 +27,10 @@ const Button = styled.button`
   font-size: 22px;
   cursor: pointer;
   transition: 0.3s;
+
+  display: inline-block; 
+  text-align: center;
+  text-decoration: none;
   
   &:hover {
    background-color: rgba(255, 255, 255, 0.15);
@@ -19,9 +38,3 @@ const Button = styled.button`
    border-color:#fff;
   }
 `;
-
-function MyButton() {
-  return <Button>Login</Button>;
-}
-
-export default MyButton;
