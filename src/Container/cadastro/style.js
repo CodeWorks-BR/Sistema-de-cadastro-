@@ -9,8 +9,7 @@ export const Container = styled.div`
   height: 100vh;
 
   background-image: url("https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
-  margin: 0;
-  padding: 0;
+ 
 `;
 
 export const Cadastro = styled.div`
@@ -28,7 +27,7 @@ export const Cadastro = styled.div`
 
 export const Title = styled.h1`
   color: #000;
-  font-size: 26px;
+ font-size: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
 `;

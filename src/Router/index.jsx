@@ -1,6 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import Login from "./../Container/login";
-import Cadastro from "./../Container/cadastro";
+import Login from "./../Container/Login";
+import Cadastro from "./../Container/Cadastro";
+import RegistrarPecas from "./../Container/RegistrarPecas";
+
+
 
 export const router = createBrowserRouter([
   {
@@ -19,4 +22,9 @@ export const router = createBrowserRouter([
       </>
     ),
   },
+  {
+    path: "/registrar-pecas", // Nome amigável na URL
+    element: <RegistrarPecas />,
+  },
+  
 ]);
