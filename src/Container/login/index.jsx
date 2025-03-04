@@ -1,6 +1,5 @@
 
-import { Container, Login, Title, Input, StyledLink, PasswordLink  } from "./style";
-import MyButton from "../../../src/Components/button";
+import { Container, Login, Title, Input, StyledLink, PasswordLink, ButtonLink } from "./style";
 
 
 
@@ -20,8 +19,8 @@ export default function App() {
         <Title>LOGIN</Title>
         <Input type="text" placeholder="Email" />
         <Input type="password" placeholder="Senha" />
-        <MyButton label="Login" to="/registrar-pecas" />
-        <PasswordLink to="/Recuperacao">Esqueci minha senha</PasswordLink>
+        <ButtonLink href="/registrar-pecas" >Entrar </ButtonLink>
+        <PasswordLink href="/registrar-pecas" >Esqueci minha senha</PasswordLink>
       </Login>
 
       <StyledLink to="/cadastro">Cadastre-se</StyledLink>

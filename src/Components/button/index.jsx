@@ -18,7 +18,7 @@ export default MyButton;
 const Button = styled(Link)`
   width: 30%;
   padding: 12px;
-  margin-right: 300px;
+  margin: 10px;
   margin-top: 10px;
   border: none;
   border-radius: 20px;
