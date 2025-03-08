@@ -20,7 +20,7 @@ export default function App() {
         <Input type="text" placeholder="Email" />
         <Input type="password" placeholder="Senha" />
         <ButtonLink href="/registrar-pecas" >Entrar </ButtonLink>
-        <PasswordLink href="/registrar-pecas" >Esqueci minha senha</PasswordLink>
+        <PasswordLink href="/recuperar-senha" >Esqueci minha senha</PasswordLink>
       </Login>
 
       <StyledLink to="/cadastro">Cadastre-se</StyledLink>
