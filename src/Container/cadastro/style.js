@@ -12,7 +12,7 @@ export const Container = styled.div`
  
 `;
 
-export const Cadastro = styled.div`
+export const Form = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
