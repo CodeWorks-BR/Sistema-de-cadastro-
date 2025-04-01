@@ -6,6 +6,15 @@ import RecuperarSenha from "./../Container/RecuperarSenha";
 
 
 export const router = createBrowserRouter([
+
+  {
+path:"/",
+    element: (
+      <>
+        <Login />
+      </>
+    )
+  },
   {
     path: "/login",
     element: (
