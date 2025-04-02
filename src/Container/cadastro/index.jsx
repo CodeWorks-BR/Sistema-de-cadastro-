@@ -1,55 +1,53 @@
 import { Container, Title, Input, StyledLink, Form } from "./style";
-import MyButton from "../../../src/Components/button";
+
 import { useState } from "react";
 import api from "../../Services/Api";
 import { useNavigate } from "react-router-dom";  
 
 const Cadastro = () => {
   const [form, setForm] = useState({ name: "", email: "", password: "", confirmPassword: "" });
-  const [error, setError] = useState(""); // Estado para mensagens de erro
-  const [loading, setLoading] = useState(false);  // Estado para indicar carregamento
+  const [error, setError] = useState(""); 
+  const [loading, setLoading] = useState(false);  
   const navigate = useNavigate();  
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    setError(""); // Limpa a mensagem de erro ao digitar
+    setError(""); 
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();  // Previne a ação padrão do form
+    e.preventDefault();  
 
-    // Verifica se todos os campos estão preenchidos
+  
     if (!form.name || !form.email || !form.password || !form.confirmPassword) {
       setError("Todos os campos são obrigatórios!");
       return;
     }
 
-    // Verifica se as senhas coincidem
+
     if (form.password !== form.confirmPassword) {
       setError("As senhas não coincidem!");
       return;
     }
 
-    // Validação do formato do email
+   
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!emailPattern.test(form.email)) {
       setError("Email inválido!");
       return;
     }
 
-    setLoading(true); // Definir carregando como true
-
+    setLoading(true); 
     try {
-      const response = await api.post("/auth/register", form); // Enviando os dados para o backend
+      const response = await api.post("/auth/register", form); 
       console.log(response);  
-      alert("Cadastro realizado com sucesso!");
-      setForm({ name: "", email: "", password: "", confirmPassword: "" }); // Limpando os campos após o cadastro
-      navigate("/login"); // Redirecionar para a tela de login
+      setForm({ name: "", email: "", password: "", confirmPassword: "" }); 
+      navigate("/login"); 
     } catch (error) {
       console.error("Erro de cadastro:", error);
       setError(error.response?.data.message || "Erro ao cadastrar.");
     } finally {
-      setLoading(false); // Definir carregando como false após o envio
+      setLoading(false); 
     }
   };
 
@@ -58,7 +56,6 @@ const Cadastro = () => {
       <Form onSubmit={handleSubmit}>
         <Title>Cadastro</Title>
 
-        {/* Exibição de erro, se houver */}
         {error && <p style={{ color: 'red', fontWeight: 'bold' }}>{error}</p>}
 
         <Input 
@@ -93,11 +90,11 @@ const Cadastro = () => {
           onChange={handleChange} 
           required 
         />
-        <MyButton 
-          label={loading ? "Cadastrando..." : "Cadastrar"} 
+        
+        <button label={loading ? "Cadastrando..." : "Cadastrar"} 
           type="submit" 
-          disabled={loading} 
-        />
+          disabled={loading} >cadastar </button>
+       
       </Form>
 
       <StyledLink to="/">Já tem uma conta? Faça login</StyledLink>

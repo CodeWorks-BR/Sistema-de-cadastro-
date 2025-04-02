@@ -9,13 +9,13 @@ export default function Pecas() {
                 <InputDiv>
                     <InputDiv1>
                         <Input type="text" placeholder="Nome" />
-                        <Input type="text" placeholder="Descrição" />
-                        <Input type="text" placeholder="Modelo" />
+                        <Input type="text" placeholder="Quantidade" />
+                        <Input type="text" placeholder="preço" />
                     </InputDiv1>
                     <InputDiv2>
-                        <Input type="text" placeholder="Marca" />
-                        <Input type="text" placeholder="Quantidade" />
-                        <Input type="text" placeholder="Valor" />
+                        <Input type="text" placeholder="categoria" />
+                        <Input type="text" placeholder="---" />
+                        <Input type="text" placeholder="---" />
                     </InputDiv2>
                 </InputDiv>
                   <MyButton label="Registrar" to="/" />

@@ -32,7 +32,7 @@ path:"/",
     ),
   },
   {
-    path: "/registrar-pecas", 
+    path: "/products", 
     element: (
       <>
         <RegistrarPecas />

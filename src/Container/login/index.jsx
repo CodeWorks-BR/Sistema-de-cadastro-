@@ -13,17 +13,17 @@ const user = {
 
 export default function LoginPage() {
   const [form, setForm] = useState({ email: "", password: "" });
-  const [error, setError] = useState(""); // Estado para erro
-  const [loading, setLoading] = useState(false); // Estado para controle de carregamento
+  const [error, setError] = useState(""); 
+  const [loading, setLoading] = useState(false); 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    setError(""); // Limpa o erro ao digitar
+    setError(""); 
   };
 
   const validateEmail = (email) => {
-    // Validação básica do formato de email
+   
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     return emailPattern.test(email);
   };
@@ -41,23 +41,21 @@ export default function LoginPage() {
       return;
     }
 
-    setLoading(true); // Define o estado de carregamento como true
+    setLoading(true); 
 
     try {
-      const response = await api.post("/login", form);
+      const response = await api.post("/auth/login", form);
 
       const { token } = response.data;
 
-      // Armazena o token no localStorage
-      localStorage.setItem("token", token);
 
-      alert("Login realizado com sucesso!");
-      navigate("/registrar-pecas");
+      localStorage.setItem("token", token);
+      navigate("/products");
     } catch (error) {
       console.error("Erro no login:", error);
       setError(error.response?.data.message || "Email ou senha incorretos.");
     } finally {
-      setLoading(false); // Define o estado de carregamento como false após a tentativa de login
+      setLoading(false); 
     }
   };
 
@@ -67,7 +65,6 @@ export default function LoginPage() {
         <img src={user.imageUrl} style={{ width: user.imageSize, borderRadius: user.imageStyle }} alt={user.imageAlt} />
         <Title>LOGIN</Title>
         
-        {/* Exibição de erro, se houver */}
         {error && <p style={{ color: 'red', fontWeight: 'bold' }}>{error}</p>}
 
         <Input 
@@ -90,7 +87,7 @@ export default function LoginPage() {
         <ButtonLink 
           as="button" 
           onClick={handleSubmit}
-          disabled={loading} // Desabilitar o botão enquanto carrega
+          disabled={loading} 
         >
           {loading ? "Entrando..." : "Entrar"}
         </ButtonLink>
