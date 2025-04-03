@@ -2,7 +2,8 @@ import { Container, Title, Input, StyledLink, Form } from "./style";
 
 import { useState } from "react";
 import api from "../../Services/Api";
-import { useNavigate } from "react-router-dom";  
+import { useNavigate } from "react-router-dom";
+import MyButton from "../../Components/button";  
 
 const Cadastro = () => {
   const [form, setForm] = useState({ name: "", email: "", password: "", confirmPassword: "" });
@@ -91,10 +92,13 @@ const Cadastro = () => {
           required 
         />
         
-        <button label={loading ? "Cadastrando..." : "Cadastrar"} 
-          type="submit" 
-          disabled={loading} >cadastar </button>
-       
+        
+       <MyButton
+       label={loading ? "Cadastrando..." : "Cadastrar"} 
+       type="submit" 
+       disabled={loading}
+    
+       />
       </Form>
 
       <StyledLink to="/">Já tem uma conta? Faça login</StyledLink>

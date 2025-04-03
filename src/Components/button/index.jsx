@@ -1,21 +1,28 @@
 import styled from "styled-components";
-import { Link  } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 
-function MyButton({ label, to }) {
-  return <Button to={to}>{label}</Button>;
+function MyButton({ label, onclick, type, disabled }) {
+  return <Button type={type} disabled={disabled} onClick={onclick}>{label}</Button>;
 }
 
 MyButton.propTypes = {
   label: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired,
+  onclick: PropTypes.func,
+  type: PropTypes.string,
+  disabled: PropTypes.bool
+};
+
+MyButton.defaultProps = {
+  type: "button",
+  onclick: () => {},
+  disabled: false
 };
 
 export default MyButton;
 
 
-const Button = styled(Link)`
+const Button = styled.button`
   width: 30%;
   padding: 12px;
   margin: 10px;
