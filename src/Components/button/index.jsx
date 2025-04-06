@@ -1,26 +1,32 @@
 import styled from "styled-components";
 import PropTypes from 'prop-types';
 
-
-function MyButton({ label, onclick, type, disabled }) {
-  return <Button type={type} disabled={disabled} onClick={onclick}>{label}</Button>;
+function MyButton({ label, onClick, type, disabled }) {
+  return (
+    <Button
+      type={type}
+      disabled={disabled}
+      onClick={onClick}
+    >
+      {label}
+    </Button>
+  );
 }
 
 MyButton.propTypes = {
   label: PropTypes.string.isRequired,
-  onclick: PropTypes.func,
+  onClick: PropTypes.func,
   type: PropTypes.string,
   disabled: PropTypes.bool
 };
 
 MyButton.defaultProps = {
   type: "button",
-  onclick: () => {},
+  onClick: () => {},
   disabled: false
 };
 
 export default MyButton;
-
 
 const Button = styled.button`
   width: 30%;
@@ -38,12 +44,10 @@ const Button = styled.button`
   display: inline-block; 
   text-align: center;
   text-decoration: none;
-  
+
   &:hover {
-   background-color: rgba(255, 255, 255, 0.15);
-   color: #fff;
-   border-color:#fff;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-color: #fff;
   }
 `;
-
-
