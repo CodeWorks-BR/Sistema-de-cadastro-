@@ -5,10 +5,10 @@ import api from "../../Services/Api";
 
 function ProductForm() {
   const [formData, setFormData] = useState({
-    name: "",
-    quantidade: "",
-    preco: "",
-    categoryId: "",
+    name: '',
+    quantity: '',
+    price: '',
+    categoryId: '',
   });
 
   const [categories, setCategories] = useState([]);
@@ -56,11 +56,28 @@ function ProductForm() {
     }
 
     setLoading(true);
-    try {
-      await api.post("/products", formData);
+const token = localStorage.getItem("token");
+
+if (!token) {
+  console.error("Token de autenticação ausente.");
+}
+
+try {
+  const payload = {
+    ...formData,
+    quantity: Number(formData.quantity),
+    price: Number(formData.price),
+    categoryId: Number(formData.categoryId),
+  };
+
+  await api.post("/products", payload, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
       alert("Peça cadastrada com sucesso!");
-      setFormData({ name: "", quantidade: "", preco: "", categoryId: "" });
+      setFormData({ name: "", quantity: "", price: "", categoryId: "" });
       setError("");
     } catch (err) {
       console.error("Erro ao cadastrar peça:", err);
@@ -133,18 +150,18 @@ function ProductForm() {
 
         <Input
           type="number"
-          name="quantidade"
+          name="quantity"
           placeholder="Quantidade"
-          value={formData.quantidade}
+          value={formData.quantity}
           onChange={handleInputChange}
           required
         />
 
         <Input
           type="number"
-          name="preco"
+          name="price"
           placeholder="Preço"
-          value={formData.preco}
+          value={formData.price}
           onChange={handleInputChange}
           required
         />
