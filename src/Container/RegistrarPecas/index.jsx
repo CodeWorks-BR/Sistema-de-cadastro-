@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import MyButton from "../../Components/button";
 import { Container, Title, Form, Input, InlineGroup, Select, H4 } from "./style";
-import api from "../../Services/Api"; 
+import api from "../../Services/Api";
 
 function ProductForm() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: '',
     quantity: '',
@@ -56,25 +59,25 @@ function ProductForm() {
     }
 
     setLoading(true);
-const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
-if (!token) {
-  console.error("Token de autenticação ausente.");
-}
+    if (!token) {
+      console.error("Token de autenticação ausente.");
+    }
 
-try {
-  const payload = {
-    ...formData,
-    quantity: Number(formData.quantity),
-    price: Number(formData.price),
-    categoryId: Number(formData.categoryId),
-  };
+    try {
+      const payload = {
+        ...formData,
+        quantity: Number(formData.quantity),
+        price: Number(formData.price),
+        categoryId: Number(formData.categoryId),
+      };
 
-  await api.post("/products", payload, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+      await api.post("/products", payload, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       alert("Peça cadastrada com sucesso!");
       setFormData({ name: "", quantity: "", price: "", categoryId: "" });
@@ -90,15 +93,15 @@ try {
 
   const handleCreateCategory = async (e) => {
     e.preventDefault();
-  
+
     if (!newCategoryName.trim()) {
       setError("Preencha o nome da categoria.");
       return;
     }
-  
+
     try {
       const token = localStorage.getItem("token");
-  
+
       const res = await api.post(
         "/categories",
         { name: newCategoryName },
@@ -108,33 +111,37 @@ try {
           },
         }
       );
-  
+
       const novaCategoria = res.data;
-  
+
       setCategories((prev) => [...prev, novaCategoria]);
-  
+
       setFormData((prev) => ({
         ...prev,
         categoryId: String(novaCategoria.id),
       }));
-  
+
       setNewCategoryName("");
       setShowCategoryManager(false);
       setError("");
-  
-     
+
       alert("Categoria criada com sucesso!");
-  
     } catch (err) {
       console.error("Erro ao criar categoria:", err);
       const message = err.response?.data?.message || "Erro ao criar categoria.";
       setError(message);
     }
   };
-  
+
   return (
     <Container>
       <Title>Cadastro de Peça</Title>
+
+      <MyButton
+        type="button"
+        onClick={() => navigate("/login")} //trocar pela rota de listar produtos
+        label="Ver Produtos"
+      />
 
       <Form onSubmit={handleSubmit}>
         {error && <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>}
@@ -194,7 +201,7 @@ try {
         {showCategoryManager && (
           <div>
             <H4>Criar nova categoria</H4>
-            <div >
+            <div>
               <Input
                 type="text"
                 name="newCategory"
@@ -206,7 +213,11 @@ try {
                 }}
                 required
               />
-              <MyButton type="submit" onClick={handleCreateCategory} label="Salvar" />
+              <MyButton
+                type="submit"
+                onClick={handleCreateCategory}
+                label="Salvar"
+              />
             </div>
           </div>
         )}
