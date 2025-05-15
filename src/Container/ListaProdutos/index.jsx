@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import {
   Container,
@@ -7,7 +8,7 @@ import {
   Button,
   AlertText,
 } from "./style";
-import api from "../../Services/Api"; // Usa o mesmo axios com baseURL e token
+import api from "../../Services/Api";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
@@ -24,15 +25,27 @@ export default function ProductList() {
           Authorization: `Bearer ${token}`,
         },
       });
-      setProducts(response.data);
+
+      // Verifica se a resposta tem um array de produtos
+      const data = response.data;
+      if (Array.isArray(data)) {
+        setProducts(data); // Caso a API retorne um array direto
+      } else if (Array.isArray(data.products)) {
+        setProducts(data.products); // Caso retorne um objeto com 'products'
+      } else {
+        console.error("Formato de resposta inesperado:", data);
+        setProducts([]); // Fallback para evitar erro
+      }
+
     } catch (error) {
       console.error("Erro ao buscar produtos:", error);
+      setProducts([]);
     }
   }
 
   function handleEdit(id) {
     console.log("Editar produto com ID:", id);
-    // Navegar para tela de edição, se necessário
+    // Aqui você pode usar useNavigate() do React Router, se quiser redirecionar
   }
 
   async function handleDelete(id) {
@@ -52,7 +65,7 @@ export default function ProductList() {
   return (
     <Container>
       <Title>Produtos Cadastrados</Title>
-      {products.length === 0 ? (
+      {Array.isArray(products) && products.length === 0 ? (
         <p>Nenhum produto encontrado.</p>
       ) : (
         products.map((product) => {
@@ -65,11 +78,14 @@ export default function ProductList() {
                 <strong>Estoque:</strong> {product.quantity}{" "}
                 {isLowStock && <AlertText>(Estoque baixo!)</AlertText>}
                 <br />
-                <strong>Categoria:</strong> {product.category?.name || "N/A"}
+                <strong>Categoria:</strong> {product.Category?.name || "N/A"}
               </ProductInfo>
               <div>
                 <Button onClick={() => handleEdit(product.id)}>Editar</Button>
-                <Button variant="danger" onClick={() => handleDelete(product.id)}>
+                <Button
+                  variant="danger"
+                  onClick={() => handleDelete(product.id)}
+                >
                   Excluir
                 </Button>
               </div>

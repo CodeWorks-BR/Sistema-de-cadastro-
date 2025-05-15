@@ -3,12 +3,13 @@ import Login from "./../Container/login";
 import Cadastro from "./../Container/cadastro";
 import RegistrarPecas from "./../Container/RegistrarPecas";
 import RecuperarSenha from "./../Container/RecuperarSenha";
+import ListaProdutos from "./../Container/ListaProdutos";
 
 
 export const router = createBrowserRouter([
 
   {
-path:"/",
+path:"/login",
     element: (
       <>
         <Login />
@@ -16,10 +17,10 @@ path:"/",
     )
   },
   {
-    path: "/login",
+    path: "/",
     element: (
       <>
-        <Login />
+        <ListaProdutos />
       </>
     ),
   },

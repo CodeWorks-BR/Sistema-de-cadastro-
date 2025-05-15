@@ -133,13 +133,58 @@ function ProductForm() {
     }
   };
 
+  /*const handleCreateCategory = async (e) => {
+  e.preventDefault();
+
+  if (!newCategoryName.trim()) {
+    setError("Preencha o nome da categoria.");
+    return;
+  }
+
+  try {
+    const token = localStorage.getItem("token");
+
+    const res = await api.post(
+      "/categories",
+      { name: newCategoryName },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    const novaCategoria = res.data;
+    console.log("Nova categoria criada:", novaCategoria); // Verifique o retorno
+
+    setCategories((prev) => [...prev, novaCategoria]);
+    console.log("Categorias após adição:", categories); // Verifique o estado
+
+    setFormData((prev) => ({
+      ...prev,
+      categoryId: String(novaCategoria.id),
+    }));
+
+    setNewCategoryName("");
+    setShowCategoryManager(false);
+    setError("");
+
+    alert("Categoria criada com sucesso!");
+  } catch (err) {
+    console.error("Erro ao criar categoria:", err);
+    const message = err.response?.data?.message || "Erro ao criar categoria.";
+    setError(message);
+  }
+};
+*/
+
   return (
     <Container>
       <Title>Cadastro de Peça</Title>
 
       <MyButton
         type="button"
-        onClick={() => navigate("/login")} //trocar pela rota de listar produtos
+        onClick={() => navigate("/")} 
         label="Ver Produtos"
       />
 
